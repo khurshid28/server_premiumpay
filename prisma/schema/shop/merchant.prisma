@@ -1,0 +1,14 @@
+model Merchant {
+    id          Int           @id @default(autoincrement())
+    name        String
+    image       String?
+    type        MERCHANT_TYPE @default(MERCHANT)
+    work_status WORK_STATUS   @default(WORKING)
+    createdAt   DateTime      @default(now())
+    updatedAt   DateTime?      @updatedAt
+    fillials    Fillial[]
+    users       User[]
+    zayavkalar  Zayavka[]
+
+    @@fulltext([name])
+}

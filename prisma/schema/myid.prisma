@@ -1,0 +1,13 @@
+model MyId {
+    id          Int         @id @default(autoincrement())
+    response_id        String?
+    comparison_value       Float?
+    passport String?
+    profile Json?
+    createdAt   DateTime    @default(now())
+    updatedAt   DateTime?    @updatedAt
+
+    zayavkalar Zayavka[]
+
+}
+

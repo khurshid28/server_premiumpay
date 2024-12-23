@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/main/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/main/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/main",
+  "projects": {
+    "main": {
+      "type": "application",
+      "root": "apps/main",
+      "entryFile": "main",
+      "sourceRoot": "apps/main/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/main/tsconfig.app.json"
+      }
+    },
+    "auth": {
+      "type": "application",
+      "root": "apps/auth",
+      "entryFile": "main",
+      "sourceRoot": "apps/auth/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/auth/tsconfig.app.json"
+      }
+    },
+    "statistic": {
+      "type": "application",
+      "root": "apps/statistic",
+      "entryFile": "main",
+      "sourceRoot": "apps/statistic/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/statistic/tsconfig.app.json"
+      }
+    },
+    "myid": {
+      "type": "application",
+      "root": "apps/myid",
+      "entryFile": "main",
+      "sourceRoot": "apps/myid/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/myid/tsconfig.app.json"
+      }
+    },
+    "zayavka": {
+      "type": "application",
+      "root": "apps/zayavka",
+      "entryFile": "main",
+      "sourceRoot": "apps/zayavka/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/zayavka/tsconfig.app.json"
+      }
+    },
+    "chat": {
+      "type": "application",
+      "root": "apps/chat",
+      "entryFile": "main",
+      "sourceRoot": "apps/chat/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/chat/tsconfig.app.json"
+      }
+    },
+    "support": {
+      "type": "application",
+      "root": "apps/support",
+      "entryFile": "main",
+      "sourceRoot": "apps/support/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/support/tsconfig.app.json"
+      }
+    },
+    "merchant": {
+      "type": "application",
+      "root": "apps/merchant",
+      "entryFile": "main",
+      "sourceRoot": "apps/merchant/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/merchant/tsconfig.app.json"
+      }
+    },
+    "fillial": {
+      "type": "application",
+      "root": "apps/fillial",
+      "entryFile": "main",
+      "sourceRoot": "apps/fillial/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/fillial/tsconfig.app.json"
+      }
+    },
+    "super": {
+      "type": "application",
+      "root": "apps/super",
+      "entryFile": "main",
+      "sourceRoot": "apps/super/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/super/tsconfig.app.json"
+      }
+    },
+    "user": {
+      "type": "application",
+      "root": "apps/user",
+      "entryFile": "main",
+      "sourceRoot": "apps/user/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/user/tsconfig.app.json"
+      }
+    }
+  }
+}

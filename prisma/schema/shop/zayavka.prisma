@@ -1,0 +1,45 @@
+model Zayavka {
+    id              Int         @id @default(autoincrement())
+    fullname        String
+    phone           String?
+    phone2          String?
+    pinfl           String?
+    cardNumber      String?
+    passport_date   String?
+    passport_by     String?
+    passport        String?
+    birth           String?
+    limit           Float?
+    canceled_reason String?
+    device          Json?
+    location        Json?
+    address         Json?
+    products        Product[]
+    expired_month   Int?
+    percent         Int?
+    amount          Float?
+    payment_amount  Float?
+    status          STATUS?     @default(PROGRESS)
+    paid_status     PAID_STATUS @default(WAITING)
+    bank            Bank?       @relation(references: [id], fields: [bank_id], onDelete: Cascade)
+    bank_id         Int?
+    agree           Boolean     @default(false)
+    step            Int         @default(1)
+    
+    
+    scoring_end     DateTime?
+    creditId        String?
+    createdAt       DateTime    @default(now())
+    updatedAt       DateTime    @updatedAt
+    merchant        Merchant    @relation(references: [id], fields: [merchant_id], onDelete: Cascade)
+    merchant_id     Int
+    fillial         Fillial     @relation(references: [id], fields: [fillial_id], onDelete: Cascade)
+    fillial_id      Int
+    user            User        @relation(references: [id], fields: [user_id], onDelete: Cascade)
+    user_id         Int
+
+    myid    MyId? @relation(references: [id], fields: [myid_id], onDelete: Cascade)
+    myid_id Int?
+
+    @@fulltext([fullname, phone, phone2, passport])
+}

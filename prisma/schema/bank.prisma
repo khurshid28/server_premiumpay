@@ -1,0 +1,11 @@
+model Bank {
+    id          Int         @id @default(autoincrement())
+    name        String?
+    expired_months Json @default("{}") // {"12" : {"percent":20,"insurance"  :2.5}}
+    createdAt   DateTime    @default(now())
+    updatedAt   DateTime?    @updatedAt
+    zayavkalar Zayavka[]
+    
+    
+}
+

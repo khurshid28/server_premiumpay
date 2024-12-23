@@ -1,0 +1,10 @@
+model Product {
+    id         Int       @id @default(autoincrement())
+    name       String
+    price      Float?
+    hash       String?
+    createdAt  DateTime  @default(now())
+    updatedAt  DateTime? @updatedAt
+    zayavka    Zayavka?  @relation(references: [id], fields: [zayavka_id], onDelete: Cascade)
+    zayavka_id Int?
+}

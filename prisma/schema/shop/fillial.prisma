@@ -1,0 +1,31 @@
+model Fillial {
+    id          Int         @id @default(autoincrement())
+    name        String
+    image       String?
+    region REGION?
+    work_status WORK_STATUS @default(WORKING)
+    createdAt   DateTime    @default(now())
+    updatedAt   DateTime?    @updatedAt
+
+    merchant    Merchant? @relation(references: [id], fields: [merchant_id], onDelete: Cascade)
+    merchant_id Int?
+
+    users      User[]
+    zayavkalar Zayavka[]
+
+    nds       String?
+    hisob_raqam String?
+    bank_name String?
+    mfo String?
+    inn String?
+    director_name String?
+    director_phone String?
+    percent_type PERCENT_TYPE @default(OUT)
+    expired_months Json @default("[]")
+    
+
+    cashback_percent Float @default(0)
+    cashback_amount Int @default(0)
+    @@fulltext([name])
+}
+
