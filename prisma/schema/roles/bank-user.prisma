@@ -1,0 +1,15 @@
+model BankUser {
+    id          Int         @id @default(autoincrement())
+    phone       String?
+    login       String?
+    password    String?
+    role        Role        @default(BANKUSER)
+    work_status WORK_STATUS @default(WORKING)
+    createdAt   DateTime    @default(now())
+    updatedAt   DateTime?    @updatedAt
+    bank    Bank @relation(references: [id], fields: [bank_id], onDelete: Cascade)
+    bank_id Int
+
+}
+
+

@@ -24,17 +24,16 @@ import {
           ? exception.getResponse()
           : { message: 'Internal Server Error' };
     
-      console.log("GlobalExceptionFilter");
-      console.log(err);
+      // console.log("GlobalExceptionFilter");
+
       
       
       response.status(status).json({
         statusCode: status,
-        error :err?.error,
+        error : err?.error,
         timestamp: new Date().toTimeString(),
         path: request.url,
         message: err?.message,
-        
       });
     }
   }

@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `fillial` MODIFY `max_amount` INTEGER NOT NULL DEFAULT 50000000;

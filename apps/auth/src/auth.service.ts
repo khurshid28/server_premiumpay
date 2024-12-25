@@ -9,6 +9,7 @@ import {
 import { PrismaClientService } from './prisma_client/prisma_client.service';
 import { LoginDto } from './dto/login-dto';
 import { JwtService } from '@nestjs/jwt';
+import { WORK_STATUS } from '@prisma/client';
 
 @Injectable()
 export class AuthService {
@@ -22,6 +23,7 @@ export class AuthService {
       where: {
         login: data.login,
         password: data.password,
+        work_status :WORK_STATUS.WORKING,
       },
     });
     if (!user) {
@@ -29,6 +31,17 @@ export class AuthService {
         where: {
           login: data.login,
           password: data.password,
+          work_status :WORK_STATUS.WORKING
+        },
+      });
+    }
+
+    if (!user) {
+      user = await this.prismaService.bankUser.findFirst({
+        where: {
+          login: data.login,
+          password: data.password,
+          work_status :WORK_STATUS.WORKING
         },
       });
     }

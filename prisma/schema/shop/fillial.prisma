@@ -26,6 +26,9 @@ model Fillial {
 
     cashback_percent Float @default(0)
     cashback_amount Int @default(0)
+
+
+    max_amount Int @default(50000000)
     @@fulltext([name])
 }
 

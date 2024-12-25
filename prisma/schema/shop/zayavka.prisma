@@ -22,13 +22,13 @@ model Zayavka {
     status          STATUS?     @default(PROGRESS)
     paid_status     PAID_STATUS @default(WAITING)
     bank            Bank?       @relation(references: [id], fields: [bank_id], onDelete: Cascade)
-    bank_id         Int?
+    bank_id         Int  @default(1)
     agree           Boolean     @default(false)
     step            Int         @default(1)
     
     
     scoring_end     DateTime?
-    creditId        String?
+    contract_id        String?
     createdAt       DateTime    @default(now())
     updatedAt       DateTime    @updatedAt
     merchant        Merchant    @relation(references: [id], fields: [merchant_id], onDelete: Cascade)

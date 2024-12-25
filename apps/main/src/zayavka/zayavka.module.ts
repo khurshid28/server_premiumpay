@@ -15,6 +15,17 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         },
       },
     ]),
+
+    ClientsModule.register([
+      {
+        name: 'BOT_CLIENT',
+        transport: Transport.TCP,
+        options: {
+          port: 3100,
+          host: 'localhost',
+        },
+      },
+    ]),
   ],
   controllers: [ZayavkaController],
   providers: [ZayavkaService],

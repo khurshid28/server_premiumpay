@@ -107,4 +107,33 @@ export class ZayavkaController {
       return new HttpException(error.message, error.status);
     }
   }
+
+
+
+
+
+
+
+
+
+  @MessagePattern('zayavka.scoring_result')
+  async scoring_result(@Payload() payload: UpdateFinish_ZayavkaDto) {
+    try {
+      return await this.zayavkaService.updateFinish(payload);
+    } catch (error) {
+      return new HttpException(error.message, error.status);
+    }
+  }
+  @MessagePattern('zayavka.update-finish')
+  async contract_result(@Payload() payload: UpdateFinish_ZayavkaDto) {
+    try {
+      return await this.zayavkaService.updateFinish(payload);
+    } catch (error) {
+      return new HttpException(error.message, error.status);
+    }
+  }
+
+
+
+
 }

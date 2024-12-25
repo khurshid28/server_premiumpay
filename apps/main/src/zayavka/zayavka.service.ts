@@ -11,9 +11,38 @@ import { Update7_ZayavkaDto } from 'apps/zayavka/src/dto/update7-zayavka-dto';
 
 @Injectable()
 export class ZayavkaService {
-  constructor(@Inject('ZAYAVKA_CLIENT') private zayavkaClient: ClientProxy) {}
+  constructor(
+    @Inject('ZAYAVKA_CLIENT') private zayavkaClient: ClientProxy,
+    @Inject('BOT_CLIENT') private botClient: ClientProxy,
+  ) {}
 
   async findAll() {
+    // await new Promise((resolve, reject) => {
+    //   this.botClient
+    //     .send('bot.contractSuccess', {
+    //       id: 1,
+    //      })
+    //     .subscribe({
+    //       next: (data) => {
+    //         console.log(data);
+
+    //         if (data && data.status) {
+    //           reject(
+    //             new HttpException(
+    //               {
+    //                 message: data.message,
+    //               },
+    //               data.status,
+    //             ),
+    //           );
+    //         } else {
+    //           resolve(data);
+    //         }
+    //       },
+    //       error: (err) => reject(err),
+    //       complete: () => resolve(null),
+    //     });
+    // });
     return await new Promise((resolve, reject) => {
       this.zayavkaClient.send('zayavka.all', '').subscribe({
         next: (data) => {
@@ -88,7 +117,7 @@ export class ZayavkaService {
     });
   }
 
-  async graph(id: number,) {
+  async graph(id: number) {
     return await new Promise((resolve, reject) => {
       this.zayavkaClient.send('zayavka.graph', { id }).subscribe({
         next: (data) => {
@@ -113,7 +142,6 @@ export class ZayavkaService {
     });
   }
 
-  
   async cancelTexts() {
     return {
       data: [
@@ -125,8 +153,7 @@ export class ZayavkaService {
     };
   }
 
-
-  async update1(data : Update1_ZayavkaDto ) {
+  async update1(data: Update1_ZayavkaDto) {
     return await new Promise((resolve, reject) => {
       this.zayavkaClient.send('zayavka.update-1', data).subscribe({
         next: (data) => {
@@ -151,7 +178,7 @@ export class ZayavkaService {
     });
   }
 
-  async update2(data : Update2_ZayavkaDto ) {
+  async update2(data: Update2_ZayavkaDto) {
     return await new Promise((resolve, reject) => {
       this.zayavkaClient.send('zayavka.update-2', data).subscribe({
         next: (data) => {
@@ -175,7 +202,7 @@ export class ZayavkaService {
       });
     });
   }
-  async update3(data : Update3_ZayavkaDto ) {
+  async update3(data: Update3_ZayavkaDto) {
     return await new Promise((resolve, reject) => {
       this.zayavkaClient.send('zayavka.update-3', data).subscribe({
         next: (data) => {
@@ -199,7 +226,7 @@ export class ZayavkaService {
       });
     });
   }
-  async update5(data : Update5_ZayavkaDto ) {
+  async update5(data: Update5_ZayavkaDto) {
     return await new Promise((resolve, reject) => {
       this.zayavkaClient.send('zayavka.update-5', data).subscribe({
         next: (data) => {
@@ -223,7 +250,7 @@ export class ZayavkaService {
       });
     });
   }
-  async update6(data : Update6_ZayavkaDto ) {
+  async update6(data: Update6_ZayavkaDto) {
     return await new Promise((resolve, reject) => {
       this.zayavkaClient.send('zayavka.update-6', data).subscribe({
         next: (data) => {
@@ -248,7 +275,7 @@ export class ZayavkaService {
     });
   }
 
-  async update7(data : Update7_ZayavkaDto ) {
+  async update7(data: Update7_ZayavkaDto) {
     return await new Promise((resolve, reject) => {
       this.zayavkaClient.send('zayavka.update-7', data).subscribe({
         next: (data) => {
@@ -272,7 +299,7 @@ export class ZayavkaService {
       });
     });
   }
-  async updateFinish(data : UpdateFinish_ZayavkaDto ) {
+  async updateFinish(data: UpdateFinish_ZayavkaDto) {
     return await new Promise((resolve, reject) => {
       this.zayavkaClient.send('zayavka.update-finish', data).subscribe({
         next: (data) => {
@@ -296,8 +323,4 @@ export class ZayavkaService {
       });
     });
   }
- 
-
-  
-
 }

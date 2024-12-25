@@ -108,6 +108,60 @@
       "compilerOptions": {
         "tsConfigPath": "apps/user/tsconfig.app.json"
       }
+    },
+    "bot": {
+      "type": "application",
+      "root": "apps/bot",
+      "entryFile": "main",
+      "sourceRoot": "apps/bot/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/bot/tsconfig.app.json"
+      }
+    },
+    "app": {
+      "type": "library",
+      "root": "libs/app",
+      "entryFile": "index",
+      "sourceRoot": "libs/app/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/app/tsconfig.lib.json"
+      }
+    },
+    "money": {
+      "type": "library",
+      "root": "libs/money",
+      "entryFile": "index",
+      "sourceRoot": "libs/money/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/money/tsconfig.lib.json"
+      }
+    },
+    "number": {
+      "type": "library",
+      "root": "libs/number",
+      "entryFile": "index",
+      "sourceRoot": "libs/number/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/number/tsconfig.lib.json"
+      }
+    },
+    "num": {
+      "type": "library",
+      "root": "libs/num",
+      "entryFile": "index",
+      "sourceRoot": "libs/num/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/num/tsconfig.lib.json"
+      }
+    },
+    "bank_result": {
+      "type": "application",
+      "root": "apps/bank_result",
+      "entryFile": "main",
+      "sourceRoot": "apps/bank_result/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/bank_result/tsconfig.app.json"
+      }
     }
   }
 }

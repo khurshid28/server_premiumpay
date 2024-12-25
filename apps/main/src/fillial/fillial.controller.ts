@@ -1,9 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put, UseGuards } from '@nestjs/common';
 import { FillialService } from './fillial.service';
 
 import { FillialUpdateDto } from 'apps/fillial/src/dto/fillial-update-dto';
 import { FillialCreateDto } from 'apps/fillial/src/dto/fillial-create-dto';
+import { AuthGuard } from '../guards/auth.guard';
 
+
+@UseGuards(AuthGuard)
 @Controller('fillial')
 export class FillialController {
   constructor(private readonly fillialService: FillialService) {}

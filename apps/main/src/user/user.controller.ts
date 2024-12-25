@@ -2,14 +2,14 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Put, Inject } from '
 import { UserService } from './user.service';
 import { UserCreateDto } from 'apps/user/src/dto/user-create-dto';
 import { UserUpdateDto } from 'apps/user/src/dto/user-update-dto';
-import { Cache, CACHE_MANAGER } from '@nestjs/cache-manager';
+
 
 
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService,
 
-     @Inject(CACHE_MANAGER) private cacheManager: Cache,
+    
   ) {}
 
   @Post("/create")
@@ -24,17 +24,10 @@ export class UserController {
   
   @Get(':id')
  async findOne(@Param('id') id: string) {
-    let key = '/user/' + id;
     
-    const cacheData = await this.cacheManager.get(key);
-
-    if (cacheData) return cacheData;
-
-    let user = await this.userService.findOne(+id);
-    await this.cacheManager.set(key, user,10000);
 
     
-    return user;
+    return await this.userService.findOne(+id);
   }
 
   @Put(':id')

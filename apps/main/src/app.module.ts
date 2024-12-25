@@ -9,6 +9,8 @@ import { FillialModule } from './fillial/fillial.module';
 import { MyidModule } from './myid/myid.module';
 import { ZayavkaModule } from './zayavka/zayavka.module';
 import { CacheModule } from '@nestjs/cache-manager';
+import { JwtModule } from '@nestjs/jwt';
+import { ResultModule } from './result/result.module';
 
 @Module({
   imports: [
@@ -20,11 +22,16 @@ import { CacheModule } from '@nestjs/cache-manager';
     FillialModule,
     MyidModule,
     ZayavkaModule,
-
-    CacheModule.register({
-      isGlobal: true,
-      ttl : 10,
+    // CacheModule.register({
+    //   isGlobal: true,
+    //   ttl: 10,
+    // }),
+    JwtModule.register({
+      global: true,
+      secret: process.env.JWT_SECRET,
+      signOptions: { expiresIn: process.env.JWT_EXPIRES },
     }),
+    ResultModule,
   ],
   controllers: [],
   providers: [],

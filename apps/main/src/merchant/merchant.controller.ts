@@ -1,9 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Put, UseGuards } from '@nestjs/common';
 import { MerchantService } from './merchant.service';
 
 import { MerchantUpdateDto } from 'apps/merchant/src/dto/merchant-update-dto';
 import { MerchantCreateDto } from 'apps/merchant/src/dto/merchant-create-dto';
+import { AuthGuard } from '../guards/auth.guard';
 
+
+@UseGuards(AuthGuard)
 @Controller('merchant')
 export class MerchantController {
   constructor(private readonly merchantService: MerchantService) {}
