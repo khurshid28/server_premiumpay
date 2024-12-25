@@ -29,6 +29,9 @@ model Fillial {
 
 
     max_amount Int @default(50000000)
+
+
+    timeout Int @default(600)
     @@fulltext([name])
 }
 

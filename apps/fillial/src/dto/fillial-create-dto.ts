@@ -106,4 +106,11 @@ export class expired_month {
   @IsNumber({ maxDecimalPlaces: 1 })
   @Min(1)
   percent: number;
+
+
+  @IsOptional()
+  @IsNumber()
+  @Min(60)
+  @Max(3600)
+  timeout: number;
 }

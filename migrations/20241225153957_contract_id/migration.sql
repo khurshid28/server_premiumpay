@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `fillial` ADD COLUMN `timeout` INTEGER NOT NULL DEFAULT 600;
