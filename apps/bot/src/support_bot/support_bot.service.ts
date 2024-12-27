@@ -3,7 +3,7 @@ import * as TelegramBot from 'node-telegram-bot-api';
 import { PrismaClientService } from '../prisma_client/prisma_client.service';
 import { NumService } from '@app/num';
 import {
-    ABOUT,
+  ABOUT,
   CARD,
   contactShareText,
   contactText,
@@ -12,6 +12,9 @@ import {
   LIMIT,
   METHODS,
   MONTHS,
+  MYID,
+  operatorFullname,
+  operatorPhone,
   operatorText,
   PAYMENT,
   selectText,
@@ -157,7 +160,8 @@ export class SupportBotService implements OnModuleInit {
           });
         } else if (
           command &&
-          (command.toLowerCase() == SupportMainCommand.DOCUMENT.toLowerCase() || command.toLowerCase() == SupportMoreCommand.DOCUMENT.toLowerCase() )
+          (command.toLowerCase() == SupportMainCommand.DOCUMENT.toLowerCase() ||
+            command.toLowerCase() == SupportMoreCommand.DOCUMENT.toLowerCase())
         ) {
           await this.instance.sendDocument(
             chatId,
@@ -168,6 +172,11 @@ export class SupportBotService implements OnModuleInit {
           command.toLowerCase() == SupportMainCommand.OPERATOR.toLowerCase()
         ) {
           await this.instance.sendMessage(chatId, operatorText);
+          await this.instance.sendContact(
+            chatId,
+            operatorPhone,
+            operatorFullname,
+          );
         } else if (
           command &&
           command.toLowerCase() == SupportMoreCommand.BACK.toLowerCase()
@@ -195,26 +204,21 @@ export class SupportBotService implements OnModuleInit {
               ],
             },
           });
-        }
-        
-
-        else if (
-            command &&
-            command.toLowerCase() == SupportMoreCommand.ABOUT.toLowerCase()
-          ) {
-            await this.instance.sendMessage(chatId, ABOUT, {
-                parse_mode :"HTML"
-            });
-          }
-          else if (
-            command &&
-            command.toLowerCase() == SupportMoreCommand.METHODS.toLowerCase()
-          ) {
-            await this.instance.sendMessage(chatId, METHODS, {
-                parse_mode :"HTML"
-            });
-          }
-        else if (
+        } else if (
+          command &&
+          command.toLowerCase() == SupportMoreCommand.ABOUT.toLowerCase()
+        ) {
+          await this.instance.sendMessage(chatId, ABOUT, {
+            parse_mode: 'HTML',
+          });
+        } else if (
+          command &&
+          command.toLowerCase() == SupportMoreCommand.METHODS.toLowerCase()
+        ) {
+          await this.instance.sendMessage(chatId, METHODS, {
+            parse_mode: 'HTML',
+          });
+        } else if (
           command &&
           command.toLowerCase() == SupportMoreCommand.EXTRA.toLowerCase()
         ) {
@@ -223,13 +227,18 @@ export class SupportBotService implements OnModuleInit {
               resize_keyboard: true,
               keyboard: [
                 [
-                    {
-                      text: SupportEXTRACommand.CREDIT_NASIYA,
-                    },
-                  ],
+                  {
+                    text: SupportEXTRACommand.CREDIT_NASIYA,
+                  },
+                ],
                 [
                   {
                     text: SupportEXTRACommand.LIMIT,
+                  },
+                ],
+                [
+                  {
+                    text: SupportEXTRACommand.MYID,
                   },
                 ],
                 [
@@ -260,62 +269,50 @@ export class SupportBotService implements OnModuleInit {
               ],
             },
           });
+        } else if (
+          command &&
+          command.toLowerCase() ==
+            SupportEXTRACommand.CREDIT_NASIYA.toLowerCase()
+        ) {
+          await this.instance.sendMessage(chatId, CREDIT_NASIYA);
+        } else if (
+          command &&
+          command.toLowerCase() ==
+            SupportEXTRACommand.INIT_PAYMENT.toLowerCase()
+        ) {
+          await this.instance.sendMessage(chatId, INIT_PAYMENT);
+        } else if (
+          command &&
+          command.toLowerCase() == SupportEXTRACommand.PAYMENT.toLowerCase()
+        ) {
+          await this.instance.sendMessage(chatId, PAYMENT, {
+            parse_mode: 'HTML',
+          });
+        } else if (
+          command &&
+          command.toLowerCase() == SupportEXTRACommand.LIMIT.toLowerCase()
+        ) {
+          await this.instance.sendMessage(chatId, LIMIT);
+        } else if (
+          command &&
+          command.toLowerCase() == SupportEXTRACommand.MYID.toLowerCase()
+        ) {
+          await this.instance.sendMessage(chatId, MYID, {
+            parse_mode: 'HTML',
+          });
+        } else if (
+          command &&
+          command.toLowerCase() == SupportEXTRACommand.CARD.toLowerCase()
+        ) {
+          await this.instance.sendMessage(chatId, CARD);
+        } else if (
+          command &&
+          command.toLowerCase() == SupportEXTRACommand.MONTHS.toLowerCase()
+        ) {
+          await this.instance.sendMessage(chatId, MONTHS, {
+            parse_mode: 'HTML',
+          });
         }
-
-
-
-
-
-
-
-        else if (
-            command &&
-            command.toLowerCase() == SupportEXTRACommand.CREDIT_NASIYA.toLowerCase()
-          ) {
-            await this.instance.sendMessage(chatId, CREDIT_NASIYA,);
-          }
-
-          else if (
-            command &&
-            command.toLowerCase() == SupportEXTRACommand.INIT_PAYMENT.toLowerCase()
-          ) {
-            await this.instance.sendMessage(chatId, INIT_PAYMENT,);
-          }
-
-
-          else if (
-            command &&
-            command.toLowerCase() == SupportEXTRACommand.PAYMENT.toLowerCase()
-          ) {
-            await this.instance.sendMessage(chatId, PAYMENT,{
-                parse_mode :"HTML"
-            });
-          }
-
-          else if (
-            command &&
-            command.toLowerCase() == SupportEXTRACommand.LIMIT.toLowerCase()
-          ) {
-            await this.instance.sendMessage(chatId, LIMIT,);
-          }
-
-          else if (
-            command &&
-            command.toLowerCase() == SupportEXTRACommand.CARD.toLowerCase()
-          ) {
-            await this.instance.sendMessage(chatId, CARD,);
-          }
-
-
-          else if (
-            command &&
-            command.toLowerCase() == SupportEXTRACommand.MONTHS.toLowerCase()
-          ) {
-            await this.instance.sendMessage(chatId, MONTHS,{
-                parse_mode : "HTML"
-            });
-          }
-
       } catch (error) {
         console.log(error);
 

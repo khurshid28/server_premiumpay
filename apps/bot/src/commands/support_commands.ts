@@ -11,9 +11,10 @@ export const contactShareText = 'Nomerni ulashish';
 export const selectText = "O'zingizni qiziqtirgan bo'limni tanlang";
 
 
+export const operatorText ="Operatorimiz bilan bog'lanish uchun"
+export const operatorPhone = "+998935034000";
 
-export const operatorText = "Operatorimiz bilan bog'lanish uchun +998935034000 nomeriga qo'ng'iroq qiling";
-
+export const operatorFullname = "PremiumPay Operator";
 export enum SupportMainCommand {
   DOCUMENT = 'Hujjatlar',
   More = "Ko'p beriladigan savollar",
@@ -34,6 +35,7 @@ export enum SupportEXTRACommand {
 
     CREDIT_NASIYA = "Premium Pay muddatli to'lovi bank kreditidan nimasi bilan farq qiladi?",
     LIMIT = "Nega menga limit bermadi ?",
+    MYID = "Yuzni skanerlash bosqichidan o'ta olmayapman",
     CARD = "Nega kartamni ulay olmayabman?",
     INIT_PAYMENT = "Oldindan to'lov mavjudmi?",
     MONTHS = "Qanday muddatlarga xarid qila olaman?",
@@ -52,3 +54,6 @@ export const PAYMENT = "<b>Click</b>,<b>Payme</b> va <b>SQB Mobile</b> ilovasida
 export const MONTHS ="Bizning platformamizdan:\n\n <b>- 12 oy</b>\n <b>- 9 oy</b>\n <b>- 6 oy</b>\n <b>- 3 oy</b>\n\nmuddatlarga xaridni amalga oshiringiz mumkin! "
 
 export const ABOUT ="<b>Premium Pay</b> — bu butun O'zbekiston bo'ylab hamkorlik nuqtalarda foydalanish mumkin bo'lgan, tovar va xizmatlarni muddatli to'lovga xarid qilishga mo'ljallangan xizmatdir.\n\nBiz Idea, Mediapark, Elmakon, Artel, Radius,  Mi-Store, Macbro, Just, Selfie, Bellstore, Adamari kabi do'konlar bilan hamkorlik qilamiz va ko'proq ma'lumotni premiumpay.uz saytida hamda ijtimoiy tarmoqlardagi sahifalarimizda topishingiz mumkin."
+
+
+export const MYID ="Shaxsni tekshirish <b>MyID</b> tizimi orqali amalga oshiriladi. Quyidagilarga ishonch hosil qilishingizni so'raymiz:\n\n- kamera toza va yaxshi ishlashiga;\n- kamera sizning yuzingiz darajasida turganiga;\n- xona yetarlicha yoritilgan ekanligiga;\n- orqa fon turli rangda bo’lishi."
