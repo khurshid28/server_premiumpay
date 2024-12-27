@@ -8,6 +8,7 @@ enum Role {
    ACCOUNTANT
    CALLCENTER
    BANKUSER
+   BOTUSER
 }
 
 

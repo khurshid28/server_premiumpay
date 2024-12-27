@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { PrismaClientService } from './prisma_client/prisma_client.service';
-import { TelegramBotService } from './telegram_bot/telegram_bot.service';
+import { AdminBotService } from './admin_bot/admin_bot.service';
 import { NumService } from '@app/num';
 
 
@@ -21,7 +21,7 @@ export class BotService {
   ];
   constructor(
     @Inject() private prismaService: PrismaClientService,
-    @Inject() private bot: TelegramBotService,
+    @Inject() private bot: AdminBotService,
     @Inject() private num: NumService,
   ) {}
   getHello(): string {

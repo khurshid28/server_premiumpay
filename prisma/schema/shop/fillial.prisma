@@ -32,6 +32,6 @@ model Fillial {
 
 
     timeout Int @default(600)
-    @@fulltext([name])
+    // @@fulltext([name])
 }
 

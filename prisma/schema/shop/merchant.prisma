@@ -10,5 +10,5 @@ model Merchant {
     users       User[]
     zayavkalar  Zayavka[]
 
-    @@fulltext([name])
+    // @@fulltext([name])
 }

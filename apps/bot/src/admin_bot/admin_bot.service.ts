@@ -3,17 +3,13 @@ import * as TelegramBot from 'node-telegram-bot-api';
 import { PrismaClientService } from '../prisma_client/prisma_client.service';
 import { STATUS } from '@prisma/client';
 import { NumService } from '@app/num';
+import { AdminCommand } from '../commands/admin_commands';
 
-export enum CommandType {
-  ALL = '/ALL',
-  TODAY = '/TODAY',
-  YESTERDAY = '/YESTERDAY',
-  MONTH = '/MONTH',
-}
+
 
 @Injectable()
-export class TelegramBotService implements OnModuleInit {
-  public instance: TelegramBot = new TelegramBot(process.env.BOT_TOKEN, {
+export class AdminBotService implements OnModuleInit {
+  public instance: TelegramBot = new TelegramBot(process.env.ADMIN_BOT_TOKEN, {
     polling: true,
   });
 
@@ -43,7 +39,7 @@ export class TelegramBotService implements OnModuleInit {
   }
 
   listen() {
-    console.log('Telegram bot started listening...');
+    console.log('Admin bot started listening...');
     this.instance.on('message', async (msg) => {
       let chatId: number = msg.from.id;
 
@@ -52,7 +48,7 @@ export class TelegramBotService implements OnModuleInit {
       if (!this.accessUser(chatId)) return;
 
       try {
-        if (command == CommandType.ALL) {
+        if (command == AdminCommand.ALL) {
           let data = await this.prismaService.zayavka.groupBy({
             by: ['status'],
             _count: true,
@@ -78,7 +74,7 @@ export class TelegramBotService implements OnModuleInit {
               parse_mode: 'HTML',
             },
           );
-        } else if (command == CommandType.TODAY) {
+        } else if (command == AdminCommand.TODAY) {
           let todayDate = () => {
             var today = new Date();
             today.setTime(today.getTime() + 5 * 60 * 60 * 1000);
@@ -117,7 +113,7 @@ export class TelegramBotService implements OnModuleInit {
               parse_mode: 'HTML',
             },
           );
-        } else if (command == CommandType.YESTERDAY) {
+        } else if (command == AdminCommand.YESTERDAY) {
           let todayDate = () => {
             var today = new Date();
             today.setTime(today.getTime() + 5 * 60 * 60 * 1000);
@@ -168,7 +164,7 @@ export class TelegramBotService implements OnModuleInit {
               parse_mode: 'HTML',
             },
           );
-        } else if (command == CommandType.MONTH) {
+        } else if (command == AdminCommand.MONTH) {
           function monthDate() {
             var today = new Date();
             today.setTime(today.getTime() + 5 * 60 * 60 * 1000);

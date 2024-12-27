@@ -1,0 +1,58 @@
+version: '3.9'
+
+volumes:
+  test_data: {}
+  app_data: {}
+networks:
+  test_network: 
+    driver: bridge
+  
+services:
+  postgres:
+    container_name: postgres-container
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - test_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=khurshid-2827
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=mydb
+    restart: always
+  
+    # networks:
+    #   - test_network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d postgres" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    command: /bin/bash -c "until pg_isready -U ${POSTGRES_USER} -p 5432; do sleep 1; done; psql -U ${POSTGRES_USER} -c 'CREATE DATABASE IF NOT EXIST mydb;'"
+  prisma-studio:
+    container_name: prisma-studio-container
+    image: timothyjmiller/prisma-studio:latest
+    restart: unless-stopped
+
+    ports:
+      - 5555:5555
+    networks:
+      - test_network
+
+  server:
+    build: .
+    container_name: server-container
+    ports:
+      - 3000:3000
+    # networks:
+    #   - test_network
+    # network_mode: host
+    # extra_hosts: 
+    #         - "host.docker.internal:host-gateway"
+    depends_on:
+      - postgres
+    volumes:
+      - app_data:/app
+    environment:
+      - DATABASE_URL=postgresql://postgres:khurshid-2827@localhost:5432/mydb?schema=public
+

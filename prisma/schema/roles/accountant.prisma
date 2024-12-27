@@ -5,7 +5,7 @@ model Accountant {
     phone       String?
     login       String?
     password    String?
-    role        Role        @default(ACCOUNTANT)
+    role        Role        @default(ACCOUNTANT) 
     work_status WORK_STATUS @default(WORKING)
     createdAt   DateTime    @default(now())
     updatedAt   DateTime?    @updatedAt

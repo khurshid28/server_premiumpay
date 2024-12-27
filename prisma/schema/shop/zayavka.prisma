@@ -41,5 +41,5 @@ model Zayavka {
     myid    MyId? @relation(references: [id], fields: [myid_id], onDelete: Cascade)
     myid_id Int?
 
-    @@fulltext([fullname, phone, phone2, passport])
+    // @@fulltext([fullname, phone, phone2, passport])
 }

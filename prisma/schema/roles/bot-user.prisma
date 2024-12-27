@@ -1,0 +1,11 @@
+model BotUser {
+    username    String         @id 
+    fullname    String?
+    phone       String?
+    chat_id    String
+
+    role        Role        @default(BOTUSER)
+    work_status WORK_STATUS @default(WORKING)
+    createdAt   DateTime    @default(now())
+    updatedAt   DateTime?    @updatedAt
+}
